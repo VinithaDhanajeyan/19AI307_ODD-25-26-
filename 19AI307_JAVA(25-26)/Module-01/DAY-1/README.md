@@ -39,11 +39,9 @@ Write a java program to get name from the user (String) and print it.
 
 ## PROGRAM:
  ```
-/*
 Program to implement variables and Operators using Java
 Developed by: SAKTHISWAR S
 RegisterNumber:  212222230127
-*/
 ```
 
 ```
@@ -68,6 +66,7 @@ public class prog{
 ## RESULT:
 
 Thus, the java program to get name from the user (String) and print it is executed successfully.
+
 
 
 
