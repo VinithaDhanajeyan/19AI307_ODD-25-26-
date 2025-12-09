@@ -1,20 +1,22 @@
-# Ex.No:4(C)  COMPOSITION IN JAVA
+# Ex.No:4(D) DESIGN PATTERN -- ABSTRACT FACTORY
 
 ## QUESTION:
 
-Implement a system where a Library contains multiple Book objects. Each Book is created inside the Library. Books can't exist independently (Composition).
+Create a program that loads an operating system shell using the Factory Pattern. Based on user input, return a shell object: windows, linux, mac.
+
+
 ## AIM:
-To Implement a system where a Library contains multiple Book objects. Each Book is created inside the Library. Books can't exist independently (Composition).
+
+To create a program that loads an operating system shell using the Factory Pattern. Based on user input, return a shell object: windows, linux, mac.
+
 
 ## ALGORITHM :
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	For each book, read title and author and create a new Book object.
-4.	Add each Book object to the Library’s internal list using composition.
-5.	After all books are added, call showBooks() to display stored books.
-6.	Print each book’s details (title and author) from the library.
-
-
+3.	Read the OS name from the user.
+4.	Use OSFactory.getOS() to create the appropriate OS object based on the input.
+5.	If a valid OS object is returned, call its loadShell() method.
+6.	If the input does not match any OS type, display "Invalid OS" message.
 
 
 
@@ -22,61 +24,66 @@ To Implement a system where a Library contains multiple Book objects. Each Book 
 
 ## PROGRAM:
  ```
-
-Program to implement a Composition Concepts in Java
+Program to implement a Abstract Factory Pattern using Java
 Developed by: Vinitha D
 RegisterNumber:  212222230175
-
 ```
 
 ```
-import java.util.*;
+import java.util.Scanner;
 
-public class CompositionExample {
+interface OperatingSystem {
+    void loadShell();
+}
+
+
+class Windows implements OperatingSystem {
+    public void loadShell() {
+        System.out.println("Loading Windows Shell...");
+    }
+}
+
+class Linux implements OperatingSystem {
+    public void loadShell() {
+        System.out.println("Loading Linux Shell...");
+    }
+}
+
+class Mac implements OperatingSystem {
+    public void loadShell() {
+        System.out.println("Loading Mac Shell...");
+    }
+}
+
+class OSFactory {
+    public static OperatingSystem getOS(String type) {
+        if (type.equals("Windows")) {
+            return new Windows();
+        } else if (type.equals("Linux")) {
+            return new Linux();
+        } else if (type.equals("Mac")) {
+            return new Mac();
+        } else {
+            return null; 
+        }
+    }
+}
+
+public class ShellLoader {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Library library = new Library();
+       
+        String input = sc.nextLine();
 
-        int n = sc.nextInt();
-        sc.nextLine();
+        OperatingSystem os = OSFactory.getOS(input);
 
-        for (int i = 0; i < n; i++) {
-            String title = sc.nextLine();
-            String author = sc.nextLine();
-            library.addBook(title, author);
+        if (os != null) {
+            os.loadShell();
+        } else {
+            System.out.println("Invalid OS: " + input);
         }
 
-        library.showBooks();
         sc.close();
-    }
-}
-
-class Book {
-    private String title;
-    private String author;
-
-    public Book(String title, String author) {
-        this.title = title;
-        this.author = author;
-    }
-
-    public String getDetails() {
-        return title + " by " + author;
-    }
-}
-
-class Library {
-    private List<Book> books = new ArrayList<>();
-
-    public void addBook(String title, String author) {
-        books.add(new Book(title, author));
-    }
-
-    public void showBooks() {
-        System.out.println("Books in Library:");
-        for (Book b : books) {
-            System.out.println("- " + b.getDetails());
-        }
     }
 }
 ```
@@ -88,12 +95,11 @@ class Library {
 
 ## OUTPUT:
 
-<img width="981" height="617" alt="image" src="https://github.com/user-attachments/assets/04652712-11e8-4a6c-ab93-35c73d0b287a" />
+<img width="673" height="418" alt="image" src="https://github.com/user-attachments/assets/3837199b-482d-4131-bd9f-7ea89a7d59c7" />
 
 
 ## RESULT:
 
-Thus, the program to implement a system where a Library contains multiple Book objects is executed successfully.
-
+Thus, the program to loads an operating system shell using the Factory Pattern is executed successfully.
 
 
