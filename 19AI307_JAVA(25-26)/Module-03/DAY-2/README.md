@@ -22,8 +22,8 @@ To Write a Java program that calculates the area of different shapes using metho
 ## PROGRAM:
  ```
 Program to implement a Polymorphism using Java
-Developed by: SAKTHISWAR S
-RegisterNumber:  212222230127
+Developed by: Vinitha D
+RegisterNumber:  212222230175
 ```
 
 ```
@@ -79,4 +79,5 @@ public class Main {
 
 ## RESULT:
 Thus, the program to calculates the area of different shapes using method overloading is executed successfully.
+
 
